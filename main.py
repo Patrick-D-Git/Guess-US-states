@@ -14,12 +14,9 @@ guessed_state_list = []
 
 
 def save_file(guessed_list):
+    """Saves a file with all your guesses and not guessed to review"""
 
     to_review_data = [state for state in state_list if state not in guessed_list]
-
-    # for state in state_list:
-    #     if state not in guessed_list:
-    #         to_review_data.append(state)
 
     max_length = len(state_list)
     to_review_data_padded = to_review_data + [None] * (max_length - len(to_review_data))
@@ -29,7 +26,7 @@ def save_file(guessed_list):
     df.to_csv("states_to_review.csv", index=False)
 
 
-while len(guessed_state_list) < len(state_list):
+while len(guessed_state_list) < len(state_list):  # continuously loop until all states have been guessed
 
     answer_state = screen.textinput(title=f"{len(guessed_state_list)}/{len(state_list)} Guessed State",
                                     prompt="What's another state name?").title()
