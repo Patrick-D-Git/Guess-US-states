@@ -14,11 +14,12 @@ guessed_state_list = []
 
 
 def save_file(guessed_list):
-    to_review_data = []
 
-    for state in state_list:
-        if state not in guessed_list:
-            to_review_data.append(state)
+    to_review_data = [state for state in state_list if state not in guessed_list]
+
+    # for state in state_list:
+    #     if state not in guessed_list:
+    #         to_review_data.append(state)
 
     max_length = len(state_list)
     to_review_data_padded = to_review_data + [None] * (max_length - len(to_review_data))
